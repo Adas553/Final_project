@@ -1,0 +1,34 @@
+ body {
+     background-color: antiquewhite;
+ }
+
+.header-table {
+    background-color: darkgray;
+    width: 100%;
+    height: 10%;
+}
+.header-table td {
+    border: 1px solid black;
+    color: #007bff;
+    text-align: center;
+}
+.header-table td a {
+    text-decoration: none;
+    color: black;
+}
+.footer-table {
+    background-color: darkgray;
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    bottom: 0;
+}
+.footer-table td {
+    border: 1px solid black;
+    color: #007bff;
+    text-align: center;
+}
+.footer-table td a {
+    text-decoration: none;
+    color: black;
+}
