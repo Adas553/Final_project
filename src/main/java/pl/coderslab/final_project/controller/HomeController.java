@@ -16,4 +16,19 @@ public class HomeController {
         return "about";
     }
 
+    @GetMapping("/statute")
+    public String showStatute() {
+        return "statute";
+    }
+
+    @GetMapping("/contact")
+    public String showContact() {
+        return "contact";
+    }
+
+    @GetMapping("/specialists")
+    public String showSpecialists() {
+        return "specialists";
+    }
+
 }
