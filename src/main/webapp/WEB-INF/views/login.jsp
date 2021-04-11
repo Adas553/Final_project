@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -20,12 +21,13 @@
 <%@include file="header.jsp"%>
 
 <div style="display: flex; text-align: center; justify-content: center; align-items: center; height: 400px">
-<form>
-    <label for="email">email: </label>
-    <input type="text" id="email" placeholder="podaj email"/>
+<form method="post" action="/login">
+    <label for="userName">User Name: </label>
+    <input type="text" id="userName" name="userName" placeholder="podaj nazwę użytkownika"/>
     <br>
     <label for="password">password: </label>
-    <input type="text" id="password" placeholder="podaj hasło"/>
+    <input type="text" id="password" name="password" placeholder="podaj hasło"/>
+<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csfr.token}"/>--%>
     <br>
     <input type="submit" value="Zaloguj">
 </form>

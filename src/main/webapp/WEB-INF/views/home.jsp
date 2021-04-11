@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-</style>
 <body>
 <%@include file="header.jsp"%>
 

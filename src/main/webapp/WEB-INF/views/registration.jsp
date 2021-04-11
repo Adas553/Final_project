@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -20,7 +21,7 @@
 <%@include file="header.jsp"%>
 
 <div style="display: flex; text-align: center; justify-content: center; align-items: center; height: 400px">
-<form>
+<form:form method="post" action="/registration">
     <label for="name">imię: </label>
     <input type="text" id="name" placeholder="podaj imię"/>
     <br>
@@ -34,7 +35,7 @@
     <input type="text" id="email" placeholder="podaj email"/>
     <br>
     <input type="submit" value="Wyślij"/>
-</form>
+</form:form>
 </div>
 
 <%@include file="footer.jsp"%>
