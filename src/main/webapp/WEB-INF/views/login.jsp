@@ -13,7 +13,10 @@
     <meta charset="UTF-8">
     <title>Strona logowania</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/style.css">
 </head>
 
@@ -22,17 +25,18 @@
 
 <div style="display: flex; text-align: center; justify-content: center; align-items: center; height: 400px">
 <form method="post" action="/login">
-    <label for="userName">User Name: </label>
+    <h2>Logowanie: </h2>
+    <label for="userName">Użytkownik: </label>
     <input type="text" id="userName" name="userName" placeholder="podaj nazwę użytkownika"/>
     <br>
-    <label for="password">password: </label>
+    <label for="password">Hasło: </label>
     <input type="text" id="password" name="password" placeholder="podaj hasło"/>
 <%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csfr.token}"/>--%>
     <br>
-    <input type="submit" value="Zaloguj">
+    <input class="btn btn-sm btn-primary btn-block" type="submit" value="Zaloguj">
 </form>
 </div>
 
-<%@include file="footer.jsp"%>
+<%--<%@include file="footer.jsp"%>--%>
 </body>
 </html>

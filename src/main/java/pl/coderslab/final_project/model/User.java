@@ -45,7 +45,7 @@ public class User {
     private String name;
 
     @Column(name = "last_name")
-    @NotEmpty(message = "Proszę podać nazwisko")
+    @NotEmpty(message = "*Proszę podać nazwisko")
     private String lastName;
 
     @Column(name = "active")
