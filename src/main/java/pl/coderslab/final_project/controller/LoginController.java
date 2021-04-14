@@ -48,6 +48,7 @@ public class LoginController {
         model.addAttribute("successMessage", "Użytkownik został poprawnie zarejestrowany");
         model.addAttribute("user", new User());
         return "registration";
-
     }
+
+
 }

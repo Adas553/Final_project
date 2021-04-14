@@ -63,13 +63,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 , "/statute", "/about", "/resources/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/login")
-                .authenticated()
+                    .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/home", true)
-                .usernameParameter("userName")
-                .passwordParameter("password");
+                    .loginPage("/login").permitAll()
+                    .defaultSuccessUrl("/home", true)
+                    .usernameParameter("userName")
+                    .passwordParameter("password")
+                .and()
+                .logout()
+                    .logoutSuccessUrl("/home")
+                    .deleteCookies("JSESSIONID")
+                    .permitAll();
 //                .and()
 //                .rememberMe();
     }

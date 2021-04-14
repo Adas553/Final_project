@@ -28,7 +28,7 @@
 
 <%--<div style="display: flex; text-align: center; justify-content: center; align-items: center;">--%>
 <div class="container-fluid">
-    <div class="row vertical-center">
+    <div class="row">
 <form:form autocomplete="off" method="post" action="/registration" modelAttribute="user"
            class="col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
 <%--    <form:errors path="*" cssClass="errorblock" element="div"/>--%>

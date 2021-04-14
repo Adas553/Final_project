@@ -23,19 +23,31 @@
 <body>
 <%@include file="header.jsp"%>
 
-<div style="display: flex; text-align: center; justify-content: center; align-items: center; height: 400px">
-<form method="post" action="/login">
-    <h2>Logowanie: </h2>
+<%--<div style="display: flex; text-align: center; justify-content: center; align-items: center;">--%>
+<div class="container-fluid">
+    <div class="row ">
+<form method="post" action="/login" class="col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
+    <h3>Logowanie: </h3>
+    <div class="form-group form-inline">
     <label for="userName">Użytkownik: </label>
     <input type="text" id="userName" name="userName" placeholder="podaj nazwę użytkownika"/>
-    <br>
+    </div>
+    <div class="form-group form-inline">
     <label for="password">Hasło: </label>
     <input type="text" id="password" name="password" placeholder="podaj hasło"/>
+    </div>
 <%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csfr.token}"/>--%>
-    <br>
     <input class="btn btn-sm btn-primary btn-block" type="submit" value="Zaloguj">
 </form>
+<%--</div>--%>
+    </div>
 </div>
+<form action="/logout" method="post"
+      class="col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
+<input class="btn btn-sm btn-primary btn-block" " type="submit" value="Wyloguj">
+<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+</form>
+
 
 <%--<%@include file="footer.jsp"%>--%>
 </body>
