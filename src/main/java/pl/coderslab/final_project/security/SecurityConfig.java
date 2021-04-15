@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -60,14 +61,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/home", "/css/**", "/js/**", "/static/**", "/registration", "/contact", "/specialists"
-                , "/statute", "/about", "/resources/**").permitAll()
+                        , "/statute", "/about", "/resources/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/patient/**").hasRole("PATIENT")
                 .antMatchers("/login")
                     .authenticated()
                 .and()
                 .formLogin()
                     .loginPage("/login").permitAll()
-                    .defaultSuccessUrl("/home", true)
+                    .defaultSuccessUrl("/patient/home", true)
                     .usernameParameter("userName")
                     .passwordParameter("password")
                 .and()
@@ -78,4 +80,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .rememberMe();
     }
+
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web
+//                .ignoring()
+//                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/icon/**");
+//    }
 }

@@ -14,57 +14,58 @@
     <title>Strona logowania</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
-<style>
 
-
-</style>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
-<%--<div style="display: flex; text-align: center; justify-content: center; align-items: center;">--%>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-<form:form autocomplete="off" method="post" action="/registration" modelAttribute="user"
-           class="col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
-<%--    <form:errors path="*" cssClass="errorblock" element="div"/>--%>
-    <h3>Rejestracja:</h3>
-    <div class="form-group form-inline">
-    <label for="name" >imię: </label>
-    <form:input class="form-control mx-sm-3" path="name" placeholder="podaj imię"/>
-    <form:errors path = "name" cssClass="error" />
-    </div>
-    <div class="form-group form-inline">
-    <label for="lastName">nazwisko: </label>
-    <form:input class="form-control mx-sm-3"   path="lastName" placeholder="podaj nazwisko"/>
-    <form:errors path="lastName" cssClass="error"/>
-    </div>
-    <div class="form-group form-inline">
-    <label for="userName">użytkownik: </label>
-    <form:input class="form-control mx-sm-3"   path="userName" placeholder="podaj nazwę użytkownika"/>
-    <form:errors path="userName" cssClass="error"/>
-    </div>
-    <div class="form-group form-inline">
-    <label for="password">hasło: </label>
-    <form:input class="form-control mx-sm-3"  path="password" placeholder="podaj hasło"/>
-    <form:errors path="password" cssClass="error"/>
-    </div>
-    <div class="form-group form-inline">
-    <label for="email">email: </label>
-    <form:input class="form-control mx-sm-3"  path="email" placeholder="podaj email"/>
-    <form:errors path="email" cssClass="error"/>
-    </div>
-    <input class="btn btn-sm btn-primary btn-block" type="submit" value="Wyślij"/>
+        <div class="col-sm-12 d-flex flex-column justify-content-center align-items-center">
+        <form:form autocomplete="off" method="post" action="/registration" modelAttribute="user">
+            <%--    <form:errors path="*" cssClass="errorblock" element="div"/>--%>
+            <h3>Rejestracja:</h3>
+            <div class="form-group">
+                <label for="name">imię: </label>
+                <form:input class="form-control" path="name" placeholder="podaj imię"/>
+                <form:errors path="name" cssClass="error"/>
+            </div>
+            <div class="form-group">
+                <label for="lastName" class="form-label">nazwisko: </label>
+                <form:input class="form-control" path="lastName" placeholder="podaj nazwisko"/>
+                <form:errors path="lastName" cssClass="error"/>
+            </div>
+            <div class="form-group">
+                <label for="userName" class="form-label">użytkownik: </label>
+                <form:input class="form-control" path="userName" placeholder="podaj nazwę użytkownika"/>
+                <form:errors path="userName" cssClass="error"/>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">hasło: </label>
+                <form:input class="form-control" path="password" placeholder="podaj hasło"/>
+                <form:errors path="password" cssClass="error"/>
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">email: </label>
+                <form:input class="form-control" path="email" placeholder="podaj email"/>
+                <form:errors path="email" cssClass="error"/>
+            </div>
+            <input class="btn btn-sm btn-primary btn-block" type="submit" value="Wyślij"/>
 
-    <h2><c:out value="${successMessage}"/></h2>
-</form:form>
-</div>
+            <h2><c:out value="${successMessage}"/></h2>
+        </form:form>
+    </div>
 </div>
 
 <%--<%@include file="footer.jsp"%>--%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
