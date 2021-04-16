@@ -15,11 +15,9 @@ public class LoginController {
 
     private final UserService userService;
 
-
     public LoginController(UserService userServiceImpl) {
         this.userService = userServiceImpl;
     }
-
 
     @GetMapping("/login")
     public String showLogin() {

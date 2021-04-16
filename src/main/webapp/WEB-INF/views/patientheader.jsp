@@ -40,15 +40,11 @@
 
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<c:url value="/registration"/>">Rejestracja</a>
-        </li>
-        <li class="nav-item order-first">
-          <a class="nav-link" href="<c:url value="/contact"/>">Wyloguj</a>
-        </li>
       </ul>
+      <form action="/logout" method="post" class="form-inline pt-3">
+        <input class="btn btn-sm btn-secondary " type="submit" value="Wyloguj">
+      </form>
     </div>
-
   </nav>
 
 </header>

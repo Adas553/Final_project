@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import pl.coderslab.final_project.model.CurrentUser;
 import pl.coderslab.final_project.model.Role;
 import pl.coderslab.final_project.model.User;
 
@@ -19,17 +20,17 @@ import java.util.Set;
 @Service
 public class SpringDataUserDetailsService implements UserDetailsService {
 
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
 
     @Autowired
-    public void setUserRepository(UserServiceImpl userServiceImpl) {
-        this.userServiceImpl = userServiceImpl;
+    public void setUserRepository(UserService userServiceImpl) {
+        this.userService = userServiceImpl;
     }
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userServiceImpl.findByUserName(userName);
+        User user = userService.findByUserName(userName);
         if (user == null) {throw new UsernameNotFoundException(userName); }
         List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
         return buildUserForAuthentication(user, authorities);
@@ -44,7 +45,6 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     }
 
     private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
-        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
-                user.getActive(), true, true, true, authorities);
+        return new CurrentUser(user.getUserName(), user.getPassword(), authorities, user);
     }
 }
