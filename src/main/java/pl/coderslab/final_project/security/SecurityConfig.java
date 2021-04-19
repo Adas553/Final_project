@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import pl.coderslab.final_project.security.SpringDataUserDetailsService;
 
 
-@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -32,28 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(customUserDetailsService())
                 .passwordEncoder(passwordEncoder());
     }
-//
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//        http.authorizeRequests()
-//                .antMatchers("/").permitAll()
-//                .antMatchers("/login", "/registration", "/contact", "/specialists"
-//                , "/statute", "/home", "/about", "/static/**").permitAll()
-//                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-//                .authenticated().and().csrf().disable().formLogin()
-//                .loginPage("/login").failureUrl("/login?error=true")
-//                .defaultSuccessUrl("/home")
-//                .usernameParameter("userName")
-//                .passwordParameter("password")
-//                .and().logout()
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("/home").and().exceptionHandling()
-//                .accessDeniedPage("/access-denied");
-//    }
-//
-
 
     @Override
     public void configure(HttpSecurity http) throws Exception {

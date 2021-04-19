@@ -12,10 +12,8 @@ import pl.coderslab.final_project.model.Role;
 import pl.coderslab.final_project.model.User;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class SpringDataUserDetailsService implements UserDetailsService {
@@ -30,17 +28,17 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userService.findByUserName(userName);
-        if (user == null) {throw new UsernameNotFoundException(userName); }
+        User user = userService.findByUserName(userName).orElseThrow(() -> {
+            throw new UsernameNotFoundException(userName);
+        });
         List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
         return buildUserForAuthentication(user, authorities);
     }
 
     private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
         Set<GrantedAuthority> roles = new HashSet<>();
-        for (Role role : userRoles) {
-            roles.add(new SimpleGrantedAuthority(role.getRole()));
-        }
+        userRoles
+                .forEach(x -> roles.add(new SimpleGrantedAuthority(x.getRole())));
         return new ArrayList<>(roles);
     }
 

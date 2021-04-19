@@ -26,26 +26,26 @@ public class User {
     private long id;
 
     @Column(name="user_name")
-    @Length(min = 5, message = "*Twój login musi mieć co najmniej 5 znaków")
-    @NotEmpty(message = "*Proszę podać login")
+    @Length(min = 5)
+    @NotEmpty
     private String userName;
 
     @Column(name = "email")
-    @Email(message = "*Proszę podać poprawny email")
-    @NotEmpty(message = "*Proszę podać email")
+    @Email
+    @NotEmpty
     private String email;
 
     @Column(name = "password")
-    @Length(min = 8, message = "*Twoje hasło musi mieć przynajmniej 8 znaków")
-    @NotEmpty(message = "*Proszę podać hasło")
+    @Length(min = 8)
+    @NotEmpty
     private String password;
 
     @Column(name = "name")
-    @NotEmpty(message = "*Proszę podać imię")
+    @NotEmpty
     private String name;
 
     @Column(name = "last_name")
-    @NotEmpty(message = "*Proszę podać nazwisko")
+    @NotEmpty
     private String lastName;
 
     @Column(name = "active")

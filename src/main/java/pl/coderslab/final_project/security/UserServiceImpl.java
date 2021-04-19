@@ -6,10 +6,10 @@ import pl.coderslab.final_project.model.Role;
 import pl.coderslab.final_project.model.User;
 import pl.coderslab.final_project.repository.RoleRepository;
 import pl.coderslab.final_project.repository.UserRepository;
-import pl.coderslab.final_project.security.UserService;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUserName(String username) {
+    public Optional<User> findByUserName(String username) {
         return userRepository.findByUserName(username);
     }
 

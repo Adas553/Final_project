@@ -16,6 +16,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<c:url value="/home"/>">Strona główna</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<c:url value="/patient/home"/>">Mój profil</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button"
              aria-expanded="false" id="dropdownMenuLink" aria-haspopup="true">
@@ -36,9 +39,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<c:url value="/contact"/>">Kontakt</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<c:url value="/patient/home"/>">Mój profil</a>
         </li>
       </ul>
     </div>

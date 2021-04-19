@@ -2,6 +2,7 @@ package pl.coderslab.final_project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,6 @@ public class PatientHomeController {
 
     private final UserService userService;
 
-    @Autowired
     public PatientHomeController(UserService userServiceImpl) {
         this.userService = userServiceImpl;
     }
@@ -24,9 +24,31 @@ public class PatientHomeController {
     @GetMapping("/home")
     public String showPatientHome(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         String userName = customUser.getUsername();
-        User byUserName = userService.findByUserName(userName);
+        User byUserName = userService.findByUserName(userName).orElseThrow(() -> {
+            throw new UsernameNotFoundException(userName);
+        });
         model.addAttribute("userName", userName);
         return "patienthome";
+    }
+
+    @GetMapping("/showdata")
+    public String showPatientData(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        String userName = customUser.getUsername();
+        User byUserName = userService.findByUserName(userName).orElseThrow(() -> {
+            throw new UsernameNotFoundException(userName);
+        });;
+        model.addAttribute("user", byUserName);
+        return "patientdata";
+    }
+
+    @GetMapping("/updatedata")
+    public String updatePatientData(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        String userName = customUser.getUsername();
+        User byUserName = userService.findByUserName(userName).orElseThrow(() -> {
+            throw new UsernameNotFoundException(userName);
+        });
+        model.addAttribute("user", byUserName);
+        return "patientdata";
     }
 
 }

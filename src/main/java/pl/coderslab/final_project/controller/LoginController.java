@@ -9,6 +9,7 @@ import pl.coderslab.final_project.model.User;
 import pl.coderslab.final_project.security.UserService;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class LoginController {
@@ -33,12 +34,11 @@ public class LoginController {
 
     @PostMapping("/registration")
     public String createNewUser(@Valid User user, BindingResult bindingResult, Model model) {
-        User newUser = userService.findByUserName(user.getUserName());
-        if (newUser != null) {
-            bindingResult
-                    .rejectValue("userName", "error.user",
-                            "Użytkownik o podanej nazwie już istnieje");
-        }
+        Optional<User> newUser = userService.findByUserName(user.getUserName());
+
+        newUser.ifPresent(x -> bindingResult.rejectValue("userName", "error.user",
+                "Użytkownik o podanej nazwie już istnieje"));
+
         if (bindingResult.hasErrors()) {
             return "registration";
         }
