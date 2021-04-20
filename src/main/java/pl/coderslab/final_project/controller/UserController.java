@@ -3,7 +3,7 @@ package pl.coderslab.final_project.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pl.coderslab.final_project.model.User;
+import pl.coderslab.final_project.security.User;
 import pl.coderslab.final_project.security.UserService;
 
 @Controller

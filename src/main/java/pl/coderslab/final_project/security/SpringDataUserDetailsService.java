@@ -7,13 +7,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.coderslab.final_project.model.CurrentUser;
-import pl.coderslab.final_project.model.Role;
-import pl.coderslab.final_project.model.User;
 
 import javax.transaction.Transactional;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class SpringDataUserDetailsService implements UserDetailsService {

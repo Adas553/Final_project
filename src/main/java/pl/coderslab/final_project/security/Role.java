@@ -1,4 +1,4 @@
-package pl.coderslab.final_project.model;
+package pl.coderslab.final_project.security;
 
 //import lombok.AllArgsConstructor;
 //import lombok.Builder;

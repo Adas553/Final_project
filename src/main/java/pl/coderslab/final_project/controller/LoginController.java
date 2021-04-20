@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.coderslab.final_project.model.User;
+import pl.coderslab.final_project.patient.Patient;
+import pl.coderslab.final_project.patient.PatientService;
+import pl.coderslab.final_project.security.User;
 import pl.coderslab.final_project.security.UserService;
 
 import javax.validation.Valid;
@@ -15,9 +17,11 @@ import java.util.Optional;
 public class LoginController {
 
     private final UserService userService;
+    private final PatientService patientService;
 
-    public LoginController(UserService userServiceImpl) {
+    public LoginController(UserService userServiceImpl, PatientService patientServiceImpl) {
         this.userService = userServiceImpl;
+        this.patientService = patientServiceImpl;
     }
 
     @GetMapping("/login")
@@ -43,6 +47,8 @@ public class LoginController {
             return "registration";
         }
         userService.saveUser(user);
+        Patient patient = new Patient(user.getUserName());
+        patientService.savePatient(patient);
         model.addAttribute("successMessage", "Użytkownik został poprawnie zarejestrowany");
         model.addAttribute("user", new User());
         return "registration";
