@@ -1,7 +1,10 @@
 package pl.coderslab.final_project.patient;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
+@Service
 public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository patientRepository;
@@ -12,7 +15,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Optional<Patient> findPatientByUser(String username) {
-        return patientRepository.findPatientByUser(username);
+        return patientRepository.findPatientByUserName(username);
     }
 
     @Override

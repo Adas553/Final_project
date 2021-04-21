@@ -34,17 +34,17 @@
             <dt class="col-sm-3">Email:</dt>
             <dd class="col-sm-9"><c:out value="${user.email}"/></dd>
         </dl>
-        <dl class="row">
+        <dl class="row gy-4">
             <dt class="col-sm-3">Przewlekłe choroby:</dt>
-            <dd class="col-sm-9">Brak</dd>
+            <dd class="col-sm-9"><c:out value="${patient.chronicDiseases}"/></dd>
             <dt class="col-sm-3">Przyjmowane leki:</dt>
-            <dd class="col-sm-9">Rutinoscorbin</dd>
+            <dd class="col-sm-9"><c:out value="${patient.drugs}"/></dd>
             <dt class="col-sm-3">Papierosy:</dt>
-            <dd class="col-sm-9">Tak</dd>
+            <dd class="col-sm-9"><c:out value="${patient.smoke}"/></dd>
             <dt class="col-sm-3">Przebyte choroby:</dt>
-            <dd class="col-sm-9">Brak</dd>
+            <dd class="col-sm-9"><c:out value="${patient.medicalHistory}"/></dd>
             <dt class="col-sm-3">Choroby osób bliskich(dziadkowie, rodzice, rodzeństwo):</dt>
-            <dd class="col-sm-9">Brak</dd>
+            <dd class="col-sm-9"><c:out value="${patient.diseasesOfRelatives}"/></dd>
         </dl>
     </div>
 </div>

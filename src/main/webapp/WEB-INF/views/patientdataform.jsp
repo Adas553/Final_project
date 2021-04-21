@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Strona logowania</title>
+    <title>Uzupełnienie danych</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -23,32 +23,82 @@
 
 <body>
 <%@include file="patientheader.jsp" %>
-filled form in java
+
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12 d-flex flex-column justify-content-center align-items-center">
-        <form:form autocomplete="off" method="post" action="/registration" modelAttribute="patient">
-            <%--    <form:errors path="*" cssClass="errorblock" element="div"/>--%>
-            <h3>Uzupełnij swoje dane:</h3>
-            <div class="form-group">
+    <form:form method="post" modelAttribute="patient" class="row gx-2">
+        <form:hidden path="id"/>
+        <form:hidden path="userName"/>
+        <form:hidden path="user"/>
+        <div class="row row-cols-2 gx-2">
+            <div class="col-md-4">
                 <label for="email" class="form-label">email: </label>
                 <form:input class="form-control" path="email"/>
                 <form:errors path="email" cssClass="error"/>
             </div>
-            <div class="form-check">
-                <label for="gender" class="form-label">płeć: </label>
-                <form:input class="form-check-input" type="radio" path="gender" value="M"/>
-                <form:errors path="gender" cssClass="error"/>
+            <div class="col-md-4">
+                <label for="age" class="form-label">wiek: </label>
+                <form:input class="form-control" path="age"/>
+                <form:errors path="age" cssClass="error"/>
             </div>
-            <div class="form-group">
-                <label for="userName" class="form-label">użytkownik: </label>
-                <form:input class="form-control" path="userName" placeholder="podaj nazwę użytkownika"/>
-                <form:errors path="userName" cssClass="error"/>
+        </div>
+        <div class="row row-cols-2 g-2">
+            <div class="col-md-4">
+                <p class="form-label">Płeć:</p>
+                <label for="gender" class="form-check-label">Mężczyzna</label>
+                <form:radiobutton class="form-check-input" path="gender" value="M"/>
+                <label for="gender" class="form-check-label">Kobieta</label>
+                <form:radiobutton class="form-check-input" path="gender" value="K" checked="checked"/>
             </div>
-            <input class="btn btn-sm btn-primary btn-block" type="submit" value="Wyślij"/>
-        </form:form>
-            <h2><c:out value="${successMessage}"/></h2>
-    </div>
+
+            <div class="col-md-4">
+                <p class="form-label">Osoba paląca:</p>
+                <form:radiobutton class="form-check-input" path="smoke" value="True"/>
+                <label class="form-check-label">
+                    Tak
+                </label>
+
+                <form:radiobutton class="form-check-input" path="smoke" value="False" checked="checked"/>
+                <label class="form-check-label">
+                    Nie
+                </label>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 g-2">
+            <div class="col-md-8">
+                <label for="chronicDiseases" class="form-label">Przyjmowane leki:</label>
+                <form:input class="form-control" path="drugs" value="${patient.drugs}"/>
+                <form:errors path="chronicDiseases" cssClass="error"/>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 g-2">
+            <div class="col-md-8">
+                <label for="drugs" class="form-label">Przewlekłe choroby:</label>
+                <form:input class="form-control" path="chronicDiseases" value="${patient.chronicDiseases}"/>
+                <form:errors path="drugs" cssClass="error"/>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 g-2">
+            <div class="col-md-8">
+                <label for="drugs" class="form-label">Przebyte choroby:</label>
+                <form:input class="form-control" path="medicalHistory" value="${patient.medicalHistory}"/>
+                <form:errors path="drugs" cssClass="error"/>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 g-2">
+            <div class="col-md-8">
+                <label for="diseasesOfRelatives" class="form-label">Przewlekłe choroby wśród krewnych:</label>
+                <form:input class="form-control" path="diseasesOfRelatives" value="${patient.diseasesOfRelatives}"/>
+                <form:errors path="diseasesOfRelatives" cssClass="error"/>
+            </div>
+        </div>
+        <div class="col-md-12 gy-2">
+            <input class="btn btn-sm btn-primary" type="submit" value="Zapisz"/>
+        </div>
+    </form:form>
 </div>
 
 <%--<%@include file="footer.jsp"%>--%>

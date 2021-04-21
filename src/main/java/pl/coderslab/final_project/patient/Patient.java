@@ -1,16 +1,20 @@
 package pl.coderslab.final_project.patient;
 
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import pl.coderslab.final_project.security.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name = "patients")
 public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name="id")
     private long id;
 
@@ -19,37 +23,45 @@ public class Patient {
     private User user;
 
     @Column(name = "user_name")
+    @NotNull
     private String userName;
 
     @Column(name = "email")
+    @Email
     private String email;
 
     @Column(name = "gender")
     private String gender;
 
     @Column(name = "age")
+    @Range(min = 0, max = 150)
     private int age;
 
     @Column(name = "chronic_diseases")
+    @Length(max = 140)
     private String chronicDiseases;
 
     @Column(name = "drugs")
+    @Length(max = 140)
     private String drugs;
 
     @Column(name = "smoke")
     private boolean smoke;
 
+    @Column(name = "diseases_of_relatives")
+    @Length(max = 140)
+    private String diseasesOfRelatives;
+
     @Column(name = "medical_history")
+    @Length(max = 140)
     private String medicalHistory;
 
-    @Column(name = "diseases_of_relatives")
-    private String diseasesOfRelatives;
 
     public Patient() {
     }
 
     public Patient(long id, User user,String userName, String email, String gender, int age, String chronicDiseases,
-                   String drugs, boolean smoke, String medicalHistory, String diseasesOfRelatives) {
+                   String drugs, boolean smoke, String diseasesOfRelatives, String medicalHistory) {
         this.id = id;
         this.user = user;
         this.userName = userName;
@@ -59,12 +71,17 @@ public class Patient {
         this.chronicDiseases = chronicDiseases;
         this.drugs = drugs;
         this.smoke = smoke;
-        this.medicalHistory = medicalHistory;
         this.diseasesOfRelatives = diseasesOfRelatives;
+        this.medicalHistory = medicalHistory;
     }
 
     public Patient(String userName) {
         this.userName = userName;
+    }
+
+    public Patient(String userName, String email) {
+        this.userName = userName;
+        this.email = email;
     }
 
     public long getId() {
@@ -139,20 +156,20 @@ public class Patient {
         this.smoke = smoke;
     }
 
-    public String getMedicalHistory() {
-        return medicalHistory;
-    }
-
-    public void setMedicalHistory(String medicalHistory) {
-        this.medicalHistory = medicalHistory;
-    }
-
     public String getDiseasesOfRelatives() {
         return diseasesOfRelatives;
     }
 
     public void setDiseasesOfRelatives(String diseasesOfRelatives) {
         this.diseasesOfRelatives = diseasesOfRelatives;
+    }
+
+    public String getMedicalHistory() {
+        return medicalHistory;
+    }
+
+    public void setMedicalHistory(String medicalHistory) {
+        this.medicalHistory = medicalHistory;
     }
 
     @Override
@@ -165,7 +182,6 @@ public class Patient {
                 ", chronicDiseases='" + chronicDiseases + '\'' +
                 ", drugs='" + drugs + '\'' +
                 ", smoke=" + smoke +
-                ", medicalHistory='" + medicalHistory + '\'' +
                 ", diseasesOfRelatives='" + diseasesOfRelatives + '\'' +
                 '}';
     }

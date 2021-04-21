@@ -47,7 +47,8 @@ public class LoginController {
             return "registration";
         }
         userService.saveUser(user);
-        Patient patient = new Patient(user.getUserName());
+        Patient patient = new Patient(user.getUserName(), user.getEmail());
+        patient.setUser(user);
         patientService.savePatient(patient);
         model.addAttribute("successMessage", "Użytkownik został poprawnie zarejestrowany");
         model.addAttribute("user", new User());
