@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.final_project.patient.Patient;
+import pl.coderslab.final_project.patient.PatientDto;
 import pl.coderslab.final_project.patient.PatientService;
 import pl.coderslab.final_project.security.CurrentUser;
 import pl.coderslab.final_project.security.User;
@@ -48,28 +49,28 @@ public class PatientHomeController {
         User byUserName = userService.findByUserName(userName).orElseThrow(() -> {
             throw new UsernameNotFoundException(userName);
         });;
-        Patient patientByUser = patientService.findPatientByUser(userName).orElseThrow(() -> {
+        PatientDto patientByUserDto = patientService.findPatientByUser(userName).orElseThrow(() -> {
             throw new UsernameNotFoundException(userName);
         });
         model.addAttribute("user", byUserName);
-        model.addAttribute("patient", patientByUser);
+        model.addAttribute("patient", patientByUserDto);
         return "patientdata";
     }
 
     @GetMapping("/updatedata")
     public String updatePatientData(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         String userName = customUser.getUsername();
-        Patient patient = patientService.findPatientByUser(userName).orElseThrow(() -> {
+        PatientDto patientDto = patientService.findPatientByUser(userName).orElseThrow(() -> {
             throw new UsernameNotFoundException(userName);
         });
 
-        model.addAttribute("patient", patient);
+        model.addAttribute("patient", patientDto);
         return "patientdataform";
     }
 
     @PostMapping("/updatedata")
-    public String updatePatientDataForm(@Valid Patient patient, BindingResult bindingResult, Model model) {
-        Optional<Patient> patientByEmail = patientService.findPatientByEmail(patient.getEmail());
+    public String updatePatientDataForm(@Valid PatientDto patientDto, BindingResult bindingResult, Model model) {
+//        Optional<Patient> patientByEmail = patientService.findPatientByEmail(patient.getEmail());
 //        patientByEmail.ifPresent(x -> {
 //            bindingResult.rejectValue("email", "error.email",
 //                    "Email o podanej nazwie już istnieje");
@@ -78,8 +79,8 @@ public class PatientHomeController {
         if (bindingResult.hasErrors()) {
             return "patientdataform";
         }
-        patientService.updatePatient(patient);
-        model.addAttribute("patient", patient);
+        patientService.updatePatient(patientDto);
+        model.addAttribute("patient", patientDto);
 
         return "redirect:/patient/showdata";
     }

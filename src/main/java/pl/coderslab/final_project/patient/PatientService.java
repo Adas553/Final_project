@@ -7,8 +7,8 @@ import java.util.Optional;
 @Service
 public interface PatientService {
 
-    Optional<Patient> findPatientByUser(String username);
-    Optional<Patient> findPatientByEmail(String email);
-    void savePatient(Patient patient);
-    void updatePatient(Patient patient);
+    Optional<PatientDto> findPatientByUser(String username);
+    Optional<PatientDto> findPatientByEmail(String email);
+    void savePatient(PatientDto patientDto);
+    void updatePatient(PatientDto patientDto);
 }
