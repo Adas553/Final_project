@@ -15,6 +15,7 @@
 .header-table td a {
     text-decoration: none;
     color: black;
+    top: 100px;
 }
 .footer-table {
     background-color: darkgray;
@@ -32,3 +33,20 @@
     text-decoration: none;
     color: black;
 }
+ .error {
+     color: #ff0000;
+     font-size: small;
+     text-align: right;
+ }
+ .errorblock{
+     color: #000;
+     background-color: #ffEEEE;
+     border: 3px solid #ff0000;
+     padding:8px;
+     margin:16px;
+ }
+ .vertical-center {
+     display: flex;
+     align-items: center;
+     min-height: 100vh;
+ }
