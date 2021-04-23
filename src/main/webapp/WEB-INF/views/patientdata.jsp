@@ -33,6 +33,10 @@
             <dd class="col-sm-9"><c:out value="${user.lastName}"/></dd>
             <dt class="col-sm-3">Email:</dt>
             <dd class="col-sm-9"><c:out value="${user.email}"/></dd>
+            <dt class="col-sm-3">Wiek:</dt>
+            <dd class="col-sm-9"><c:out value="${patient.age}"/></dd>
+            <dt class="col-sm-3">Płeć:</dt>
+            <dd class="col-sm-9"><c:out value="${patient.gender}"/></dd>
         </dl>
         <dl class="row gy-4">
             <dt class="col-sm-3">Przewlekłe choroby:</dt>

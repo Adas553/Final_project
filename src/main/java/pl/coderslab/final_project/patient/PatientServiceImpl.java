@@ -32,4 +32,5 @@ public class PatientServiceImpl implements PatientService {
     public void updatePatient(Patient patient) {
         patientRepository.save(patient);
     }
+    
 }
