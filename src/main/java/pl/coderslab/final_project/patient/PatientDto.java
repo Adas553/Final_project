@@ -1,19 +1,41 @@
 package pl.coderslab.final_project.patient;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import pl.coderslab.final_project.security.User;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 public class PatientDto {
 
     private Long id = 0L;
+
+    @NotNull
     private String userName;
+
+    @Email
     private String email;
+
     private User user;
+
     private String gender;
+
+    @Range(min = 0, max = 150)
     private int age;
+
+    @Length(max = 140)
     private String chronicDiseases;
+
+    @Length(max = 140)
     private String drugs;
+
     private boolean smoke;
+
+    @Length(max = 140)
     private String diseasesOfRelatives;
+
+    @Length(max = 140)
     private String medicalHistory;
 
     public PatientDto(Long id, String userName, String email, User user, String gender, int age,

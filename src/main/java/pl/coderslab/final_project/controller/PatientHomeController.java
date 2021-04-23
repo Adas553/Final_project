@@ -69,7 +69,7 @@ public class PatientHomeController {
     }
 
     @PostMapping("/updatedata")
-    public String updatePatientDataForm(@Valid PatientDto patientDto, BindingResult bindingResult, Model model) {
+    public String updatePatientDataForm(@ModelAttribute("patient") @Valid PatientDto patientDto, BindingResult bindingResult, Model model) {
 //        Optional<Patient> patientByEmail = patientService.findPatientByEmail(patient.getEmail());
 //        patientByEmail.ifPresent(x -> {
 //            bindingResult.rejectValue("email", "error.email",

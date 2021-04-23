@@ -23,37 +23,30 @@ public class Patient {
     private User user;
 
     @Column(name = "user_name")
-    @NotNull
     private String userName;
 
     @Column(name = "email")
-    @Email
     private String email;
 
     @Column(name = "gender")
     private String gender;
 
     @Column(name = "age")
-    @Range(min = 0, max = 150)
     private int age;
 
     @Column(name = "chronic_diseases")
-    @Length(max = 140)
     private String chronicDiseases;
 
     @Column(name = "drugs")
-    @Length(max = 140)
     private String drugs;
 
     @Column(name = "smoke")
     private boolean smoke;
 
     @Column(name = "diseases_of_relatives")
-    @Length(max = 140)
     private String diseasesOfRelatives;
 
     @Column(name = "medical_history")
-    @Length(max = 140)
     private String medicalHistory;
 
 
