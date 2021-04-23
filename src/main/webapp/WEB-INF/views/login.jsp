@@ -13,42 +13,49 @@
     <meta charset="UTF-8">
     <title>Strona logowania</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/style.css">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
-<%--<div style="display: flex; text-align: center; justify-content: center; align-items: center;">--%>
-<div class="container-fluid">
-    <div class="row ">
-<form method="post" action="/login" class="col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
-    <h3>Logowanie: </h3>
-    <div class="form-group form-inline">
-    <label for="userName">Użytkownik: </label>
-    <input type="text" id="userName" name="userName" placeholder="podaj nazwę użytkownika"/>
-    </div>
-    <div class="form-group form-inline">
-    <label for="password">Hasło: </label>
-    <input type="text" id="password" name="password" placeholder="podaj hasło"/>
-    </div>
-<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csfr.token}"/>--%>
-    <input class="btn btn-sm btn-primary btn-block" type="submit" value="Zaloguj">
-</form>
-<%--</div>--%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 d-flex flex-column justify-content-center align-items-center">
+            <form method="post" action="/login">
+                <h3>Logowanie: </h3>
+                <div class="mb-3">
+                    <label for="userName" class="form-label">Użytkownik: </label>
+                    <input type="text" id="userName" name="userName" class="form-control" placeholder="podaj nazwę użytkownika"/>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Hasło: </label>
+                    <input type="text" id="password" name="password" class="form-control"  placeholder="podaj hasło"/>
+                </div>
+                <%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csfr.token}"/>--%>
+                <input class="btn btn-sm btn-primary btn-block form-control" type="submit" value="Zaloguj">
+            </form>
+            <form action="/logout" method="post">
+                <input class="btn btn-sm btn-primary btn-block form-control" type="submit" value="Wyloguj">
+            </form>
+        </div>
     </div>
 </div>
-<form action="/logout" method="post"
-      class="col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
-<input class="btn btn-sm btn-primary btn-block" " type="submit" value="Wyloguj">
+
 <%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-</form>
+
 
 
 <%--<%@include file="footer.jsp"%>--%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

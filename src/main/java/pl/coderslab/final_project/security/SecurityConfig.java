@@ -1,5 +1,6 @@
 package pl.coderslab.final_project.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import pl.coderslab.final_project.security.SpringDataUserDetailsService;
 
 
-@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -31,28 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(customUserDetailsService())
                 .passwordEncoder(passwordEncoder());
     }
-//
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//        http.authorizeRequests()
-//                .antMatchers("/").permitAll()
-//                .antMatchers("/login", "/registration", "/contact", "/specialists"
-//                , "/statute", "/home", "/about", "/static/**").permitAll()
-//                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-//                .authenticated().and().csrf().disable().formLogin()
-//                .loginPage("/login").failureUrl("/login?error=true")
-//                .defaultSuccessUrl("/home")
-//                .usernameParameter("userName")
-//                .passwordParameter("password")
-//                .and().logout()
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("/home").and().exceptionHandling()
-//                .accessDeniedPage("/access-denied");
-//    }
-//
-
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -60,14 +38,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/home", "/css/**", "/js/**", "/static/**", "/registration", "/contact", "/specialists"
-                , "/statute", "/about", "/resources/**").permitAll()
+                        , "/statute", "/about", "/resources/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/patient/**").hasRole("PATIENT")
                 .antMatchers("/login")
                     .authenticated()
                 .and()
                 .formLogin()
                     .loginPage("/login").permitAll()
-                    .defaultSuccessUrl("/home", true)
+                    .defaultSuccessUrl("/patient/home", true)
                     .usernameParameter("userName")
                     .passwordParameter("password")
                 .and()
@@ -78,4 +57,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .rememberMe();
     }
+
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web
+//                .ignoring()
+//                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/icon/**");
+//    }
 }

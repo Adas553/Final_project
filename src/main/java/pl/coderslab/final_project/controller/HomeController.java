@@ -31,4 +31,9 @@ public class HomeController {
         return "specialists";
     }
 
+    @GetMapping("/bootstrapsample")
+    public String bootstrapSample() {
+        return "bootstrapsample";
+    }
+
 }
