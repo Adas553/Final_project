@@ -36,7 +36,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Hasło: </label>
-                    <input type="text" id="password" name="password" class="form-control"  placeholder="podaj hasło"/>
+                    <input type="password" id="password" name="password" class="form-control"  placeholder="podaj hasło"/>
                 </div>
                 <%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csfr.token}"/>--%>
                 <input class="btn btn-sm btn-primary btn-block form-control" type="submit" value="Zaloguj">
